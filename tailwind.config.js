@@ -1,3 +1,5 @@
+
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -6,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        'chef-service': "url('/src/assets/home/chef-service.jpg')", 
+      },
       fontFamily: {
         inter: ['Inter', 'sans-serif'],
         raleway: ['Raleway', 'sans-serif'],

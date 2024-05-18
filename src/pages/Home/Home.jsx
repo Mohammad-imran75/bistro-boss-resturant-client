@@ -1,9 +1,18 @@
+import Banner from "../Banner/Banner";
+import Categorey from "../categorey/Categorey";
+import FormMenu from "./formmenu/FormMenu";
+import MenuItem from "./menuItem/MenuItem";
+import ChefService from "./service/ChefService";
 
 
 const Home = () => {
     return (
         <div>
-            <h1>This is home page</h1>
+           <Banner></Banner>
+           <Categorey></Categorey>
+           <ChefService></ChefService>
+           <MenuItem></MenuItem>
+           <FormMenu></FormMenu>
         </div>
     );
 };

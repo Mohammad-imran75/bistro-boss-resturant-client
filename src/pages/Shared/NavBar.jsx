@@ -5,54 +5,67 @@ const NavBar = () => {
     <>
       <li>
         <NavLink
-          className={({ isActive }) => {
+          className={({ isActive }) =>
             isActive
-              ? "text-[20px] font-semibold text-[#EEFF25]"
-              : " text-white text-[20px]";
-          }}
+              ? "text-[20px] font-semibold text-[#EEFF25] border-b-4 border-orange-600"
+              : "text-white text-[20px]"
+          }
           to="/"
         >
           HOME
         </NavLink>
       </li>
       <li>
-        <NavLink className={({ isActive }) => {
-          isActive
-            ? "text-[20px] font-semibold text-[#EEFF25]"
-            : " text-white text-[20px]";
-        }}>COTACT US</NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive
+              ? "text-[20px] font-semibold text-[#EEFF25] border-b-4 border-orange-600"
+              : "text-white text-[20px]"
+          }
+          to="/contact"
+        >
+          CONTACT US
+        </NavLink>
       </li>
       <li>
         <NavLink
-          className={({ isActive }) => {
+          className={({ isActive }) =>
             isActive
-              ? "text-[20px] font-semibold text-[#EEFF25]"
-              : " text-white text-[20px]";
-          }}
+              ? "text-[20px] font-semibold text-[#EEFF25] border-b-4 border-orange-600"
+              : "text-white text-[20px]"
+          }
+          to="/dashboard"
         >
           DASHBOARD
         </NavLink>
       </li>
       <li>
         <NavLink
-          className={({ isActive }) => {
+          className={({ isActive }) =>
             isActive
-              ? "text-[20px] font-semibold text-[#EEFF25]"
-              : " text-white text-[20px]";
-          }}
+              ? "text-[20px] font-semibold text-[#EEFF25] border-b-4 border-orange-600"
+              : "text-white text-[20px]"
+          }
+          to="/menu"
         >
           OUR MENU
         </NavLink>
       </li>
       <li>
-        <NavLink className={({ isActive }) => {
-          isActive
-            ? "text-[20px] font-semibold text-[#EEFF25]"
-            : " text-white text-[20px]";
-        }}>OUR SHOP</NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive
+              ? "text-[20px] font-semibold text-[#EEFF25] border-b-4 border-orange-600"
+              : "text-white text-[20px]"
+          }
+          to="/shop"
+        >
+          OUR SHOP
+        </NavLink>
       </li>
     </>
   );
+
   return (
     <>
       <div className="navbar fixed z-10 text-white opacity-90 bg-[#15151580]">
@@ -81,7 +94,7 @@ const NavBar = () => {
               {navOptions}
             </ul>
           </div>
-          <a className="text-2xl font-extrabold text-white ">
+          <a className="text-2xl font-extrabold text-white">
             BISTRO BOSS <br /> <span className="text-xl">Restaurant</span>
           </a>
         </div>

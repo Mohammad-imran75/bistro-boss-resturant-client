@@ -1,7 +1,7 @@
 
 
 const SheredMenu = ({item}) => {
-    console.log(item)
+    // console.log(item)
     const {image,recipe,name,price} = item;
     return (
         <div className="flex space-x-4">

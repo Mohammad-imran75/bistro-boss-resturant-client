@@ -58,9 +58,9 @@ const NavBar = () => {
               ? "text-[20px] font-semibold text-[#EEFF25] border-b-4 border-orange-600"
               : "text-white text-[20px]"
           }
-          to="/shop"
+          to="/order"
         >
-          OUR SHOP
+          ORDER ITEM
         </NavLink>
       </li>
     </>

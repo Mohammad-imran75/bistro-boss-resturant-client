@@ -22,18 +22,6 @@ const NavBar = () => {
               ? "text-[20px] font-semibold text-[#EEFF25] border-b-4 border-orange-600"
               : "text-white text-[20px]"
           }
-          to="/contact"
-        >
-          CONTACT US
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          className={({ isActive }) =>
-            isActive
-              ? "text-[20px] font-semibold text-[#EEFF25] border-b-4 border-orange-600"
-              : "text-white text-[20px]"
-          }
           to="/dashboard"
         >
           DASHBOARD
@@ -58,9 +46,21 @@ const NavBar = () => {
               ? "text-[20px] font-semibold text-[#EEFF25] border-b-4 border-orange-600"
               : "text-white text-[20px]"
           }
-          to="/order"
+          to="/order/salad"
         >
           ORDER ITEM
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          className={({ isActive }) =>
+            isActive
+              ? "text-[20px] font-semibold text-[#EEFF25] border-b-4 border-orange-600"
+              : "text-white text-[20px]"
+          }
+          to="/login"
+        >
+          Login
         </NavLink>
       </li>
     </>

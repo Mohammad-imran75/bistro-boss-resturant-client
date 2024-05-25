@@ -1,6 +1,55 @@
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../porvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const NavBar = () => {
+  const {user,logOut} = useContext(AuthContext);
+  const navigate = useNavigate();
+  const handleLogOut = () =>{
+    logOut()
+    .then(()=>{
+      Swal.fire({
+        icon:'success',
+        title: "Wow log Out successfull",
+        showClass: {
+          popup: `
+            animate__animated
+            animate__fadeInUp
+            animate__faster
+          `
+        },
+        hideClass: {
+          popup: `
+            animate__animated
+            animate__fadeOutDown
+            animate__faster
+          `
+        }
+      }).then(() => {
+        navigate('/'); 
+      });
+    }).catch(()=>{
+      Swal.fire({
+        icon:'error',
+        title: "oh try agian",
+        showClass: {
+          popup: `
+            animate__animated
+            animate__fadeInUp
+            animate__faster
+          `
+        },
+        hideClass: {
+          popup: `
+            animate__animated
+            animate__fadeOutDown
+            animate__faster
+          `
+        }
+      });
+    })
+  }
   const navOptions = (
     <>
       <li>
@@ -51,18 +100,8 @@ const NavBar = () => {
           ORDER ITEM
         </NavLink>
       </li>
-      <li>
-        <NavLink
-          className={({ isActive }) =>
-            isActive
-              ? "text-[20px] font-semibold text-[#EEFF25] border-b-4 border-orange-600"
-              : "text-white text-[20px]"
-          }
-          to="/login"
-        >
-          Login
-        </NavLink>
-      </li>
+     
+    
     </>
   );
 
@@ -103,7 +142,25 @@ const NavBar = () => {
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">{navOptions}</ul>
           </div>
-          <a className="btn">Button</a>
+          {
+        user ? <>
+        <button onClick={handleLogOut} className="btn btn-ghost bg-[#D1A054B2]">Log out</button>
+        </>
+       :<>
+         <li>
+        <NavLink
+          className={({ isActive }) =>
+            isActive
+              ? "text-[20px] font-semibold text-[#EEFF25] border-b-4 border-orange-600"
+              : "text-white text-[20px]"
+          }
+          to="/login"
+        >
+          Login
+        </NavLink>
+      </li>
+       </> 
+      }
         </div>
       </div>
     </>

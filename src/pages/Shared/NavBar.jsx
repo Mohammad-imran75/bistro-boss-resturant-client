@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../porvider/AuthProvider";
 import Swal from "sweetalert2";
 
@@ -147,18 +147,7 @@ const NavBar = () => {
         <button onClick={handleLogOut} className="btn btn-ghost bg-[#D1A054B2]">Log out</button>
         </>
        :<>
-         <li>
-        <NavLink
-          className={({ isActive }) =>
-            isActive
-              ? "text-[20px] font-semibold text-[#EEFF25] border-b-4 border-orange-600"
-              : "text-white text-[20px]"
-          }
-          to="/login"
-        >
-          Login
-        </NavLink>
-      </li>
+        <Link to='/login'><button className="btn btn-ghost bg-[#D1A054B2]">login</button></Link>
        </> 
       }
         </div>

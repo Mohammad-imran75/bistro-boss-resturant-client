@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import loginImg from '../../assets/others/authentication1.png'
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { AuthContext } from '../../porvider/AuthProvider';
 import Swal from 'sweetalert2';
@@ -11,6 +11,8 @@ const Login = () => {
     const [disable,setDisable] = useState(true);
     const {loginUser} = useContext(AuthContext);
     const navigate = useNavigate();
+    const locaiton = useLocation();
+    const from = location.state?.from?.pathname || "/";
     const handleLogin = (e) => {
         e.preventDefault();
         const email = e.target.email.value;
@@ -37,7 +39,7 @@ const Login = () => {
                   `
                 }
               }).then(()=>{
-                navigate('/')
+                navigate(from, { replace: true });
               })
         }).catch((error)=>{
             console.log(error.message);

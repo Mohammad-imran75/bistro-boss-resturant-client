@@ -2,54 +2,56 @@ import { useContext } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../porvider/AuthProvider";
 import Swal from "sweetalert2";
+import { FaShoppingCart } from "react-icons/fa";
 
 const NavBar = () => {
-  const {user,logOut} = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   const navigate = useNavigate();
-  const handleLogOut = () =>{
+  const handleLogOut = () => {
     logOut()
-    .then(()=>{
-      Swal.fire({
-        icon:'success',
-        title: "Wow log Out successfull",
-        showClass: {
-          popup: `
+      .then(() => {
+        Swal.fire({
+          icon: "success",
+          title: "Wow log Out successfull",
+          showClass: {
+            popup: `
             animate__animated
             animate__fadeInUp
             animate__faster
-          `
-        },
-        hideClass: {
-          popup: `
+          `,
+          },
+          hideClass: {
+            popup: `
             animate__animated
             animate__fadeOutDown
             animate__faster
-          `
-        }
-      }).then(() => {
-        navigate('/'); 
-      });
-    }).catch(()=>{
-      Swal.fire({
-        icon:'error',
-        title: "oh try agian",
-        showClass: {
-          popup: `
+          `,
+          },
+        }).then(() => {
+          navigate("/");
+        });
+      })
+      .catch(() => {
+        Swal.fire({
+          icon: "error",
+          title: "oh try agian",
+          showClass: {
+            popup: `
             animate__animated
             animate__fadeInUp
             animate__faster
-          `
-        },
-        hideClass: {
-          popup: `
+          `,
+          },
+          hideClass: {
+            popup: `
             animate__animated
             animate__fadeOutDown
             animate__faster
-          `
-        }
+          `,
+          },
+        });
       });
-    })
-  }
+  };
   const navOptions = (
     <>
       <li>
@@ -71,9 +73,12 @@ const NavBar = () => {
               ? "text-[20px] font-semibold text-[#EEFF25] border-b-4 border-orange-600"
               : "text-white text-[20px]"
           }
-          to="/dashboard"
+          to="/"
         >
-          DASHBOARD
+          <button className="btn">
+            <FaShoppingCart className="mr-3 "></FaShoppingCart>
+            <div className="badge badge-secondary">+0</div>
+          </button>
         </NavLink>
       </li>
       <li>
@@ -100,8 +105,6 @@ const NavBar = () => {
           ORDER ITEM
         </NavLink>
       </li>
-     
-    
     </>
   );
 
@@ -142,14 +145,22 @@ const NavBar = () => {
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">{navOptions}</ul>
           </div>
-          {
-        user ? <>
-        <button onClick={handleLogOut} className="btn btn-ghost bg-[#D1A054B2]">Log out</button>
-        </>
-       :<>
-        <Link to='/login'><button className="btn btn-ghost bg-[#D1A054B2]">login</button></Link>
-       </> 
-      }
+          {user ? (
+            <>
+              <button
+                onClick={handleLogOut}
+                className="btn btn-ghost bg-[#D1A054B2]"
+              >
+                Log out
+              </button>
+            </>
+          ) : (
+            <>
+              <Link to="/login">
+                <button className="btn btn-ghost bg-[#D1A054B2]">login</button>
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </>

@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 
 const SignUp = () => {
   const navigate = useNavigate();
-    const {signUpUser} = useContext(AuthContext);
+    const {signUpUser,updateUserPropile} = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
   const {
     register,
@@ -21,6 +21,8 @@ const SignUp = () => {
     signUpUser(data.email,data.password)
     .then(result => {
         console.log(result.user);
+       updateUserPropile(data.name,data.photo)
+       .then(()=>{
         Swal.fire({
           icon:'success',
           title: "Sign Up successfull",
@@ -41,6 +43,7 @@ const SignUp = () => {
         }).then(()=>{
           navigate('/login')
         })
+       })
     })
     reset()
   };
@@ -69,6 +72,21 @@ const SignUp = () => {
                 />
                 {errors.name && (
                   <span className="text-red-600 text-xl">Name is required</span>
+                )}
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text font-bold">Photo</span>
+                </label>
+                <input
+                  type="text"
+                  name="photo"
+                  {...register("photo", { required: true })}
+                  placeholder="Photo URL"
+                  className="input input-bordered"
+                />
+                {errors.photo && (
+                  <span className="text-red-600 text-xl">Photo URl is required</span>
                 )}
               </div>
               <div className="form-control">

@@ -5,9 +5,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../porvider/AuthProvider";
 import Swal from "sweetalert2";
+import usePublicSecure from "../../hooks/usePublicSecure";
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const publicSecure = usePublicSecure();
     const {signUpUser,updateUserPropile} = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
   const {
@@ -23,26 +25,36 @@ const SignUp = () => {
         console.log(result.user);
        updateUserPropile(data.name,data.photo)
        .then(()=>{
-        Swal.fire({
-          icon:'success',
-          title: "Sign Up successfull",
-          showClass: {
-            popup: `
-              animate__animated
-              animate__fadeInUp
-              animate__faster
-            `
-          },
-          hideClass: {
-            popup: `
-              animate__animated
-              animate__fadeOutDown
-              animate__faster
-            `
-          }
-        }).then(()=>{
-          navigate('/login')
-        })
+        const userInfo = {
+          name: data.name,
+          email:data.email
+        }
+          publicSecure.post('/users',userInfo)
+          .then(res=>{
+            if(res.data.insertedId){
+              Swal.fire({
+                icon:'success',
+                title: "Sign Up successfull",
+                showClass: {
+                  popup: `
+                    animate__animated
+                    animate__fadeInUp
+                    animate__faster
+                  `
+                },
+                hideClass: {
+                  popup: `
+                    animate__animated
+                    animate__fadeOutDown
+                    animate__faster
+                  `
+                }
+              }).then(()=>{
+                navigate('/login')
+              })
+            }
+          })
+    
        })
     })
     reset()

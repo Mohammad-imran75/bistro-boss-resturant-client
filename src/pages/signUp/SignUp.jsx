@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../porvider/AuthProvider";
 import Swal from "sweetalert2";
 import usePublicSecure from "../../hooks/usePublicSecure";
+import SocialLogin from "../../components/sheredMenu/sociallogin/SocialLogin";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -162,12 +163,17 @@ const SignUp = () => {
                 />
               </div>
             </form>
+            <div className="divider">OR</div>
+            <SocialLogin></SocialLogin>
+           
             <p className="text-[#D1A054] font-semibold text-center pb-4 text-xl">
               <small>
                 All Ready Register? <Link to="/login">Go to Login</Link>
               </small>
             </p>
+            
           </div>
+         
         </div>
       </div>
     </div>

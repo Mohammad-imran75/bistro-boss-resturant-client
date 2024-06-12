@@ -5,13 +5,14 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { AuthContext } from '../../porvider/AuthProvider';
 import Swal from 'sweetalert2';
+import SocialLogin from '../../components/sheredMenu/sociallogin/SocialLogin';
 const Login = () => {
     const [showPassword,setShowPassword] = useState(false)
     const captchaRef = useRef(null);
     const [disable,setDisable] = useState(true);
     const {loginUser} = useContext(AuthContext);
     const navigate = useNavigate();
-    const locaiton = useLocation();
+    const location = useLocation();
     const from = location.state?.from?.pathname || "/";
     const handleLogin = (e) => {
         e.preventDefault();
@@ -133,6 +134,7 @@ const Login = () => {
               </div>
              
             </form>
+            <SocialLogin></SocialLogin>
             <p className='text-[#D1A054] font-semibold text-center pb-4 text-xl'><small>New here ? <Link to='/signup'>create an acount</Link></small></p>
           </div>
         </div>

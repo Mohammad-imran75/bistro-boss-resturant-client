@@ -6,6 +6,7 @@ import { IoMdMenu } from "react-icons/io";
 import { FaShoppingBag } from "react-icons/fa";
 import { MdContactEmergency } from "react-icons/md";
 const Dashboard = () => {
+  const isAdmin = true;
   return (
     <div className="flex">
       <div className="w-[280px] bg-[#D1A054] min-h-screen">
@@ -15,36 +16,93 @@ const Dashboard = () => {
         </h1>
         <div>
           <ul className="menu space-y-3 font-bold uppercase">
-            <li>
-              <NavLink to="/dashboard/userHome"><FaHome></FaHome>User Home</NavLink>
-            </li>
-            <li>
-              <NavLink to="/dashboard/reservation"><FaCalendar></FaCalendar> Reservation</NavLink>
-            </li>
-            <li>
-              <NavLink to="/dashboard/payment"><FaPaypal></FaPaypal> Payment history</NavLink>
-            </li>
-            <li>
-              <NavLink to="/dashboard/cart"><FaShoppingCart></FaShoppingCart> MY Cart</NavLink>
-            </li>
-            <li>
-              <NavLink to="/dashboard/review"><FcFeedback></FcFeedback> Add Review</NavLink>
-            </li>
-            <li>
-              <NavLink to="/dashboard/bookings"><TbBrandBooking></TbBrandBooking> MY Booking</NavLink>
-            </li>
+            {isAdmin ? (
+              <>
+                <li>
+                  <NavLink to="/dashboard/userHome">
+                    <FaHome></FaHome>User Home
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/reservation">
+                    <FaCalendar></FaCalendar> Reservation
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/payment">
+                    <FaPaypal></FaPaypal> Payment history
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/cart">
+                    <FaShoppingCart></FaShoppingCart> MY Cart
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/review">
+                    <FcFeedback></FcFeedback> Add Review
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/bookings">
+                    <TbBrandBooking></TbBrandBooking> MY Booking
+                  </NavLink>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <NavLink to="/dashboard/userHome">
+                    <FaHome></FaHome>User Home
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/reservation">
+                    <FaCalendar></FaCalendar> Reservation
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/payment">
+                    <FaPaypal></FaPaypal> Payment history
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/cart">
+                    <FaShoppingCart></FaShoppingCart> MY Cart
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/review">
+                    <FcFeedback></FcFeedback> Add Review
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/bookings">
+                    <TbBrandBooking></TbBrandBooking> MY Booking
+                  </NavLink>
+                </li>
+              </>
+            )}
             <div className="divider"></div>
             <li>
-              <NavLink to="/"><FaHome></FaHome>Home</NavLink>
+              <NavLink to="/">
+                <FaHome></FaHome>Home
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/menu"><IoMdMenu></IoMdMenu>Menu</NavLink>
+              <NavLink to="/menu">
+                <IoMdMenu></IoMdMenu>Menu
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/order/salad"><FaShoppingBag></FaShoppingBag>shop</NavLink>
+              <NavLink to="/order/salad">
+                <FaShoppingBag></FaShoppingBag>shop
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/menu"><MdContactEmergency></MdContactEmergency>Contact</NavLink>
+              <NavLink to="/menu">
+                <MdContactEmergency></MdContactEmergency>Contact
+              </NavLink>
             </li>
           </ul>
         </div>
